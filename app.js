@@ -35,7 +35,7 @@ app.use(methodOverride(function (req, res) {
 
 //Logging
 if(process.env.NODE_ENV === 'development') {
-    app.use(morgan('dev'))
+    // app.use(morgan('dev'))
 }
 
 // handlebar helpers
