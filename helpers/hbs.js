@@ -18,13 +18,25 @@ module.exports = {
         return input.replace(/<(?:.|\n)*?>/gm, '')
     },
     editIcon: function (storyUser, loggedInUser, storyId, floating = true) {
-            if(storyUser._id.toString() == loggedInUser._id.toString()) {
-                if(floating) {
-                    return `<a href="/stories/edit/${storyId}" class="btn-floating halfway-fab blue"> <i class="fas fa-edit fa-small"></i></a> `
-                }
-                else {
-                    return ''
-                }
+        if(storyUser._id.toString() == loggedInUser._id.toString()) {
+            if(floating) {
+                return `<a href="/stories/edit/${storyId}" class="btn-floating halfway-fab blue"> <i class="fas fa-edit fa-small"></i></a> `
             }
-    }
+            else {
+                return ''
+            }
+        }
+    },
+    select: function (selected, options) {
+        return options
+            .fn(this)
+            .replace(
+                new RegExp(' value="' + selected + '"'),
+                '$& selected="selected"'
+            )
+            .replace(
+                new RegExp('>' + selected + '</option>'),
+                ' selected="selected"$&'
+            )
+    },
 }
